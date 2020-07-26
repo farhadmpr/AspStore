@@ -2,9 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspStore.Application.Interfaces.Contexts;
+using AspStore.Persistence.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +26,13 @@ namespace Endpoint.Site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = @"Data Source=.;Initial Catalog=AspStoreDb;Integerated Security=True;";
+
+            services.AddScoped<IDataBaseContext, DataBaseContext>();
+
+            services.AddEntityFrameworkSqlServer()
+                .AddDbContext<DataBaseContext>(option => option.UseSqlServer(connectionString));
+
             services.AddControllersWithViews();
         }
 

@@ -1,4 +1,5 @@
-﻿using AspStore.Domain.Entities.Users;
+﻿using AspStore.Application.Interfaces.Contexts;
+using AspStore.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace AspStore.Persistence.Contexts
 {
-    public class DataBaseContext : DbContext
+    public class DataBaseContext : DbContext, IDataBaseContext
     {
         public DataBaseContext(DbContextOptions options) : base(options)
         {
