@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspStore.Application.Interfaces.Contexts;
+using AspStore.Application.Services.Users.Queries.GetUsers;
 using AspStore.Persistence.Contexts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace Endpoint.Site
             string connectionString = @"Data Source=.;Initial Catalog=AspStoreDb;Integerated Security=True;";
 
             services.AddScoped<IDataBaseContext, DataBaseContext>();
+            services.AddScoped<IGetUsersService, GetUsersService>();
 
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<DataBaseContext>(option => option.UseSqlServer(connectionString));

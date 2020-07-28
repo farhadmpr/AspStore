@@ -9,7 +9,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AspStore.Common\AspStore.Common.csproj" />
     <ProjectReference Include="..\AspStore.Domain\AspStore.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\Users\Commands\" />
   </ItemGroup>
 
 </Project>
